@@ -1,10 +1,13 @@
 import React from "react";
 import { render } from "react-dom";
+import HomePage from "./HomePage";
 
-function App() {
+function App(props) {
   return (
     <div>
       <h1>HELP!</h1>
+      <p>props.name : {props.name}</p>
+      <HomePage />
     </div>
   );
 }
@@ -12,4 +15,4 @@ function App() {
 export default App;
 
 const appDiv = document.getElementById("app");
-render(<App />, appDiv);
+render(<App name="PMJ" />, appDiv);
