@@ -10,11 +10,11 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import { Link } from "react-router-dom";
 
-function CreateRoomPage() {
+function CreateRoomPage(props) {
   let defaultVotes = 2;
   const [guestCanPause, setGuestCanPause] = useState(true);
   const [votesToSkip, setVotesToSkip] = useState(defaultVotes);
-  const [buttonPressed, setButtonPressed] = useState();
+  //const [buttonPressed, setButtonPressed] = useState();
 
   function handleRoomButton() {
     const requestOptions = {
@@ -27,7 +27,10 @@ function CreateRoomPage() {
     };
     fetch("/api/create-room", requestOptions)
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => {
+        console.log(data);
+        props.history.push("/room/" + data.code);
+      });
   }
 
   return (

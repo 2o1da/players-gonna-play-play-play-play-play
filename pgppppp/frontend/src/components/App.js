@@ -4,7 +4,7 @@ import HomePage from "./HomePage";
 
 function App(props) {
   return (
-    <div>
+    <div className="center">
       <h1>HELP!</h1>
       <p>props.name : {props.name}</p>
       <HomePage />
