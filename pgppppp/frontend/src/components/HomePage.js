@@ -8,12 +8,15 @@ import { Grid, Button, ButtonGroup, Typography } from "@material-ui/core";
 export default function HomePage() {
   const [roomCode, setRoomCode] = useState(null);
 
-  useEffect(() => {
+  async function componentDidMount() {
     fetch("/api/user-in-room")
-      .then(res => res.json())
-      .then(data => setRoomCode(data.code));
-  }, []);
-
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          roomCode: data.code,
+        });
+      });
+  }
   function renderHomePage() {
     return (
       <Grid container spacing={3}>
@@ -36,6 +39,10 @@ export default function HomePage() {
     );
   }
 
+  function clearRoomCode() {
+    setRoomCode(null);
+  }
+
   return (
     <Router>
       <Switch>
@@ -43,12 +50,17 @@ export default function HomePage() {
           exact
           path="/"
           render={() => {
-            return roomCode ? <Redirect to={`/room/${roomCode}`} /> : renderHomePage;
+            return roomCode ? <Redirect to={`/room/${roomCode}`} /> : renderHomePage();
           }}
         />
         <Route path="/create" component={CreateRoomPage} />
         <Route path="/join" component={RoomJoinPage} />
-        <Route path="/room/:roomcode" component={Room} />
+        <Route
+          path="/room/:roomcode"
+          render={props => {
+            return <Room {...props} leaveRoomCallback={clearRoomCode} />;
+          }}
+        />
       </Switch>
     </Router>
   );

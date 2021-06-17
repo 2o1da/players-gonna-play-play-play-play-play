@@ -16,6 +16,9 @@ function CreateRoomPage(props) {
   const [votesToSkip, setVotesToSkip] = useState(defaultVotes);
   //const [buttonPressed, setButtonPressed] = useState();
 
+  const [roomCode, setRoomCode] = useState(null);
+  const [update, setUpdate] = useState(false);
+
   function handleRoomButton() {
     const requestOptions = {
       method: "POST",
@@ -33,13 +36,14 @@ function CreateRoomPage(props) {
       });
   }
 
+  const title = props.update ? "Update Room" : "Create Room";
+
   return (
     <div>
-      <h1>Create Room Page</h1>
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
           <Typography component="h4" variant="h4">
-            Create A Room
+            {title}
           </Typography>
         </Grid>
       </Grid>
