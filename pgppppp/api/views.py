@@ -1,16 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
 from rest_framework import generics, status
 from .serializers import RoomSerializer, CreateRoomSerializer, UpdateRoomSerializer
 from .models import Room
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import JsonResponse
+
+
 # Create your views here.
 # def main(request):
 #     return HttpResponse('<h1>Help</h1><div>When I was younger so much younger then today</div>')
 
 
-# class RoomView(generics.ListAPIView):
 class RoomView(generics.ListAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
@@ -20,24 +21,27 @@ class CreateRoomView(APIView):
     serializer_class = CreateRoomSerializer
 
     def post(self, request, format=None):
+        print(self.request.session.session_key)
         if not self.request.session.exists(self.request.session.session_key):
             self.request.session.create()
 
         serializer = self.serializer_class(data=request.data)
+
         if serializer.is_valid():
-            guest_can_pause = serializer.data.get("guest_can_pause")
-            votes_to_skip = serializer.data.get("votes_to_skip")
+            guest_can_pause = serializer.data.get("title")
+            votes_to_skip = serializer.data.get("content")
             host = self.request.session.session_key
             queryset = Room.objects.filter(host=host)
+
             if queryset.exists():
                 room = queryset[0]
-                room.guest_can_pause = guest_can_pause
-                room.votes_to_skip = votes_to_skip
-                room.save(update_fields=['guest_can_pause', 'votes_to_skip'])
+                room.title = guest_can_pause
+                room.content = votes_to_skip
+                room.save(update_fields=['title', 'content'])
                 return Response(RoomSerializer(room).data, status=status.HTTP_200_OK)
             else:
-                room = Room(host=host, guest_can_pause=guest_can_pause,
-                            votes_to_skip=votes_to_skip)
+                room = Room(host=host, title=guest_can_pause,
+                            content=votes_to_skip)
                 room.save()
                 return Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)
 
