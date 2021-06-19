@@ -28,10 +28,11 @@ router.register(r'posts', views.PostView, 'post')     # add this
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('frontend.urls')),
-    #path('api/', include('api.urls')),
     path('api/', include(router.urls)),
     path('spotify/', include('spotify.urls')),
     url(r'^favicon\.ico$', RedirectView.as_view(
         url='/static/images/favicon.ico'))
 ]
+
+#path('', include('frontend.urls')),
+#path('api/', include('api.urls')),
