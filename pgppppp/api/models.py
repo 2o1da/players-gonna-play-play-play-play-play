@@ -3,6 +3,14 @@ import random
 import string
 
 
+class Post(models.Model):
+    title = models.CharField(
+        max_length=100, default='', help_text='제목을 입력해주세요.')
+    content = models.TextField(help_text='내용을 입력해주세요.')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
 def generate_code():
     temp = string.ascii_letters+string.digits
 

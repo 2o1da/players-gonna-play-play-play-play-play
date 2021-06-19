@@ -20,10 +20,17 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.views.generic import RedirectView
 
+from api import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()                      # add this
+router.register(r'posts', views.PostView, 'post')     # add this
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
-    path('api/', include('api.urls')),
+    #path('api/', include('api.urls')),
+    path('api/', include(router.urls)),
     path('spotify/', include('spotify.urls')),
     url(r'^favicon\.ico$', RedirectView.as_view(
         url='/static/images/favicon.ico'))

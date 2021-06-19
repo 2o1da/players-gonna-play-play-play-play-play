@@ -1,23 +1,8 @@
 from rest_framework import serializers
-from .models import Room
+from .models import Post
 
 
-class RoomSerializer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Room
-        fields = ('id', 'code', 'host', 'title',
-                  'content', 'created_at', 'updated_at')
-
-
-class CreateRoomSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Room
-        fields = ('title', 'content')
-
-
-class UpdateRoomSerializer(serializers.ModelSerializer):
-    code = serializers.CharField(validators=[])
-
-    class Meta:
-        model = Room
-        fields = ('title', 'content', 'code')
+        model = Post
+        fields = ('id', 'title', 'content', 'created_at', 'updated_at')
