@@ -26,10 +26,13 @@
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.58",
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
     "css-loader": "^5.2.6",
     "react-bootstrap": "^1.6.1",
+    "react-multi-carousel": "^2.6.3",
     "react-router-dom": "^5.2.0",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.9.0",
+    "spotify-web-api-js": "^1.5.1"
   }
 }
