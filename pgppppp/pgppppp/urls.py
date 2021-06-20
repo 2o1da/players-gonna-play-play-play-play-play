@@ -29,7 +29,7 @@ router = routers.DefaultRouter()                      # add this
 router.register(r'posts', views.PostView, 'post')     # add this
 
 urlpatterns = [
-    #url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
 
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
