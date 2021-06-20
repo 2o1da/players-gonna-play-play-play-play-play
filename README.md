@@ -9,7 +9,10 @@
 <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white&textColor=white"/>
 </div>
 
-### 동작 영상
+### Deploy
+http://2o1da.pythonanywhere.com/
+
+### 시연 영상
 ![PGPPPPP - Chrome 2021-06-20 02-23-08](https://user-images.githubusercontent.com/77760931/122650654-2bb83680-d16f-11eb-9c65-c755bdc1cbcc.gif)
 
 ### Install & Run
