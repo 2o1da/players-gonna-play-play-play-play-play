@@ -12,7 +12,7 @@
 ### 동작 영상
 ![PGPPPPP - Chrome 2021-06-20 02-23-08](https://user-images.githubusercontent.com/77760931/122650654-2bb83680-d16f-11eb-9c65-c755bdc1cbcc.gif)
 
-### Install
+### Install & Run
 #### fornt-end, pgppppp폴더에서 패키지 설치
 ```
 npm install
