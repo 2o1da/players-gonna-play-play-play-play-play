@@ -3,8 +3,6 @@ import { ButtonGroup, Container, ListGroup, InputGroup, FormControl, Button, Car
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-js";
-import Post from "./Post";
-import Info from "./Info";
 import CreatePost from "./CreatePost";
 import { render } from "react-dom";
 
@@ -26,8 +24,9 @@ function SearchPage(props) {
   const [activeItem, setActiveItem] = useState({ track_cover: "", track_artist: "", track_title: "", title: "", content: "" });
 
   function refreshList() {
+    //.get("http://127.0.0.1:8000/api/posts/")
     axios
-      .get("http://127.0.0.1:8000/api/posts/")
+      .get("http://2o1da.pythonanywhere.com/api/posts/")
       .then(res => {
         setPostList(res.data);
         console.log("잘받아옴");
@@ -48,12 +47,14 @@ function SearchPage(props) {
   function handleSubmit(post) {
     toggle();
     if (post.id) {
-      axios.put(`http://localhost:8000/api/posts/${post.id}/`, post).then(res => refreshList());
+      //      axios.put(`http://localhost:8000/api/posts/${post.id}/`, post).then(res => refreshList());
+      axios.put(`http://2o1da.pythonanywhere.com/api/posts/${post.id}/`, post).then(res => refreshList());
       return;
     }
 
+    //.post("http://localhost:8000/api/posts/", post)
     axios
-      .post("http://localhost:8000/api/posts/", post)
+      .post("http://2o1da.pythonanywhere.com/api/posts/", post)
       .then(res => refreshList())
       .catch(err => {
         console.log("에러:", err);
@@ -61,7 +62,8 @@ function SearchPage(props) {
   }
 
   function handleDelete(post) {
-    axios.delete(`http://localhost:8000/api/posts/${post.id}/`).then(res => refreshList());
+    //axios.delete(`http://localhost:8000/api/posts/${post.id}/`).then(res => refreshList());
+    axios.delete(`http://2o1da.pythonanywhere.com/api/posts/${post.id}/`).then(res => refreshList());
   }
 
   function createPost(c, a, t) {
@@ -109,7 +111,8 @@ function SearchPage(props) {
   const spotifyApi = new SpotifyWebApi();
 
   function getAccessToken() {
-    axios.get("http://127.0.0.1:8000/spotify/get-access-token").then(res => setToken(res.data.token));
+    //axios.get("http://127.0.0.1:8000/spotify/get-access-token").then(res => setToken(res.data.token));
+    axios.get("http://2o1da.pythonanywhere.com/spotify/get-access-token").then(res => setToken(res.data.token));
     // fetch("/spotify/get-access-token")
     //   .then(res => res.json())
     //   .then(data => {
