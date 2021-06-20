@@ -14,9 +14,10 @@
 http://2o1da.pythonanywhere.com/
 
 ### Video
-![PGPPPPP - Chrome 2021-06-20 02-23-08](https://user-images.githubusercontent.com/77760931/122650654-2bb83680-d16f-11eb-9c65-c755bdc1cbcc.gif)
+![PGPPPPP - Chrome 2021-06-20 14-35-59](https://user-images.githubusercontent.com/77760931/122663393-10801200-d1d5-11eb-82ed-c98480d94fcb.gif)
 
-### Install & Run
+
+### Install & Run in Local
 #### fornt-end, pgppppp폴더에서 패키지 설치
 ```
 npm install
