@@ -120,12 +120,11 @@ function SearchPage(props) {
     //   });
   }
 
-  getAccessToken();
-
   useEffect(() => {
+    getAccessToken();
     spotifyApi.setAccessToken(token);
     console.log("토큰:", token);
-  }, [token]);
+  }, []);
 
   function searchMusic() {
     axios(`https://api.spotify.com/v1/search?q=${input}&type=track&limit=20`, {
@@ -166,45 +165,47 @@ function SearchPage(props) {
         {renderPostList()}
         {modal ? <CreatePost activeItem={activeItem} toggle={toggle} onSave={handleSubmit} /> : null}
 
-        <Container>
-          <InputGroup style={{ width: "70vw", margin: "auto", marginTop: "30px" }}>
-            <FormControl
-              onChange={e => {
-                setInput(e.target.value);
-              }}
-              onKeyDown={() => {
-                setArtist([]);
-                setTitle([]);
-                setAlbum([]);
-                setCover([]);
-                setDate([]);
-              }}
-              onKeyUp={() => searchMusic()}
-              type="text"
-              placeholder="Artist, songs, or albums"
-            />
-            <InputGroup.Append>
-              <Button onClick={() => searchMusic()} variant="dark" style={{ zIndex: "-1" }}>
-                Search
-              </Button>
-            </InputGroup.Append>
-          </InputGroup>
-        </Container>
+        <Container style={{ position: "fixed", top: "120px", left: "50px" }}>
+          <Container style={{ justifyContent: "center" }}>
+            <InputGroup style={{ width: "70vw", margin: "auto", marginTop: "30px" }}>
+              <FormControl
+                onChange={e => {
+                  setInput(e.target.value);
+                }}
+                onKeyDown={() => {
+                  setArtist([]);
+                  setTitle([]);
+                  setAlbum([]);
+                  setCover([]);
+                  setDate([]);
+                }}
+                onKeyUp={() => searchMusic()}
+                type="text"
+                placeholder="Artist, songs, or albums"
+              />
+              <InputGroup.Append>
+                <Button onClick={() => searchMusic()} variant="dark" style={{ zIndex: "-1" }}>
+                  Search
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </Container>
 
-        <Container style={{ width: "70vw", margin: "auto" }}>
-          {title.map((e, i) => {
-            {
-              return (
-                <ListGroup.Item style={{ padding: "5px" }}>
-                  <img src={cover[i]} style={{ width: "55px", marginRight: "10px" }}></img>
-                  <span>{`${artist[i]} - ${e}`}</span>
-                  <Button onClick={() => createPost(cover[i], artist[i], title[i])} variant="dark" style={{ position: "absolute", right: "0", margin: "10px" }}>
-                    Posting
-                  </Button>
-                </ListGroup.Item>
-              );
-            }
-          })}
+          <Container style={{ width: "70vw", margin: "auto" }}>
+            {title.map((e, i) => {
+              {
+                return (
+                  <ListGroup.Item style={{ padding: "5px" }}>
+                    <img src={cover[i]} style={{ width: "55px", marginRight: "10px" }}></img>
+                    <span>{`${artist[i]} - ${e}`}</span>
+                    <Button onClick={() => createPost(cover[i], artist[i], title[i])} variant="dark" style={{ position: "absolute", right: "0", margin: "10px" }}>
+                      Posting
+                    </Button>
+                  </ListGroup.Item>
+                );
+              }
+            })}
+          </Container>
         </Container>
       </div>
     );

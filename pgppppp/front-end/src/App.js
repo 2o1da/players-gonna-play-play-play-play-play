@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Container className="text-center p-5">
-        <h1 style={{ fontWeight: "900" }}>Players gonna play play play play play</h1>
+        <h1 style={{ fontWeight: "900", marginBottom: "50px" }}>Players gonna play play play play play</h1>
       </Container>
       <SearchPage />
     </div>
