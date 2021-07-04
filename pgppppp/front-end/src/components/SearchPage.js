@@ -165,7 +165,7 @@ function SearchPage(props) {
         {renderPostList()}
         {modal ? <CreatePost activeItem={activeItem} toggle={toggle} onSave={handleSubmit} /> : null}
 
-        <Container style={{ position: "fixed", top: "120px", left: "50px" }}>
+        <Container style={{ position: "relative", top: "120px", left: "50px" }}>
           <Container style={{ justifyContent: "center" }}>
             <InputGroup style={{ width: "70vw", margin: "auto", marginTop: "30px" }}>
               <FormControl
