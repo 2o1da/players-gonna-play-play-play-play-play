@@ -1,5 +1,5 @@
 ## Players Gonna Play Play Play Play Play
- 프로젝트명은 뮤직 Player를 떠올리다가 미국 가수 Taylor Swift의 Shake It Off 가사가 생각나서 가져왔다.
+ 프로젝트명은 뮤직 Player를 떠올리다가 가수 Taylor Swift의 Shake It Off 가사가 생각나서 가져왔다.
  
  API를 통해 음원 데이터를 가져오고 이를 기록할 수 있는 것이 특징이다.<br/>
  CRUD를 구현하였으며 호스트 구분이 없어 모두가 보고 제어할 수 있다.
